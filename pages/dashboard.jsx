@@ -108,62 +108,53 @@ export default function Dashboard() {
 
   const platforms = [
     {
-      id: 'staking',
-      title: 'Yield Yak',
-      description: 'Stake your AVAX tokens on Yak platform',
-      icon: Zap,
-      gradient: 'from-red-500 to-orange-500'
-    },
-    {
-      id: 'dex',
-      title: 'Steakhut Finance',
-      description: 'Swap tokens on Steakhut Finance',
-      icon: ArrowRightLeft,
-      gradient: 'from-red-500 to-orange-500'
-    },
-    {
-      id: 'trade',
-      title: 'Aave',
-      description: 'Supply, borrow, swap, stake and more',
+      id: 'buy',
+      title: 'Buy BONK',
+      description: 'Buy BONK tokens directly',
       icon: ShoppingBag,
-      gradient: 'from-red-500 to-orange-500'
+      gradient: 'from-yellow-500 to-orange-500'
+    },
+    {
+      id: 'swap',
+      title: 'BONK Swap',
+      description: 'Swap tokens on BONK DEX',
+      icon: ArrowRightLeft,
+      gradient: 'from-yellow-500 to-orange-500'
     }
   ];
-
+  
+  // Update the getPlatformTitle function
+  const getPlatformTitle = (platform) => {
+    switch (platform) {
+      case 'buy':
+        return 'Buy BONK';
+      case 'swap':
+        return 'BONK Swap';
+      default:
+        return 'BONK Link';
+    }
+  };
+  
+  // Update the getPlatformIcon function
   const getPlatformIcon = (platform) => {
     switch (platform) {
-      case 'staking':
-        return <Zap className="w-5 h-5 text-black" />;
-      case 'dex':
-        return <ArrowRightLeft className="w-5 h-5 text-black" />;
-      case 'trade':
+      case 'buy':
         return <ShoppingBag className="w-5 h-5 text-black" />;
+      case 'swap':
+        return <ArrowRightLeft className="w-5 h-5 text-black" />;
       default:
         return <Link2 className="w-5 h-5 text-black" />;
     }
   };
-
-  const getPlatformTitle = (platform) => {
-    switch (platform) {
-      case 'staking':
-        return 'Yield Yak';
-      case 'dex':
-        return 'Steakhut Finance';
-      case 'trade':
-        return 'Aave';
-      default:
-        return 'Avax Blink';
-    }
-  };
-
+  
+  // Update handleCardClick function
   const handleCardClick = (platform) => {
     setActiveCard(platform.id);
     const urls = {
-      staking: 'https://yieldyak.com/avalanche/staking/',
-      dex: 'https://www.steakhut.finance/swap',
-      trade: 'https://app.aave.com/?marketName=proto_avalanche_v3'
+      buy: 'https://buybonk.com',
+      swap: 'https://www.bonkswap.io'
     };
-
+  
     const timestamp = Date.now();
     const dexUrl = urls[platform.id];
     const actualUrl = `https://unfold2024mlinks.vercel.app/dapp/nav1?url=${encodeURIComponent(dexUrl)}&t=${timestamp}`;
@@ -174,7 +165,7 @@ export default function Dashboard() {
       display: dexUrl,
       actual: actualUrl
     };
-
+  
     const existingBlinks = JSON.parse(localStorage.getItem(`blinks_${fullAddress}`) || '[]');
     localStorage.setItem(`blinks_${fullAddress}`, JSON.stringify([newBlink, ...existingBlinks]));
     loadBlinks(fullAddress);
@@ -201,7 +192,7 @@ export default function Dashboard() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="flex items-center gap-4">
-          <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-yellow-500 border-t-transparent rounded-full animate-spin" />
           <span className="text-gray-400">Loading...</span>
         </div>
       </div>
@@ -212,16 +203,16 @@ export default function Dashboard() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
         <div className="text-center space-y-4 max-w-md">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
+          <AlertCircle className="w-12 h-12 text-yellow-500 mx-auto" />
           <h1 className="text-2xl font-bold">Wallet Not Connected</h1>
           <p className="text-gray-400">
-            Please connect your wallet to access your Avax Blinks dashboard.
+            Please connect your wallet to access your Bonk Blinks dashboard.
           </p>
           <button
             onClick={() => router.push('/')}
-            className="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 
+            className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 
                      rounded-xl font-medium text-black hover:shadow-lg 
-                     hover:shadow-red-500/20 transition-all duration-300"
+                     hover:shadow-yellow-500/20 transition-all duration-300"
           >
             Connect Wallet
           </button>
@@ -233,7 +224,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Head>
-        <title>Dashboard - Avax Blinks</title>
+        <title>Dashboard - Bonk Blinks</title>
       </Head>
 
       <div className="max-w-7xl mx-auto p-8">
@@ -241,9 +232,9 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-12">
           <div className="flex items-center space-x-4">
             <div className="bg-white/5 backdrop-blur-sm px-4 py-2 rounded-lg">
-              <span className="text-lg font-mono text-red-500">Avax Blinks</span>
+              <span className="text-lg font-mono text-yellow-500">Bonk Blinks</span>
             </div>
-            <span className="text-red-500">⚡</span>
+            <span className="text-yellow-500">⚡</span>
           </div>
           
           <div className="flex items-center gap-4">
@@ -265,9 +256,9 @@ export default function Dashboard() {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm
-                       hover:border-red-500/50 transition-all duration-300">
+                       hover:border-yellow-500/50 transition-all duration-300">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 rounded-lg bg-gradient-to-r from-red-500 to-red-800">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-800">
                 <Link2 className="w-5 h-5 text-black" />
               </div>
               <h3 className="text-sm text-gray-400">Total Blinks</h3>
@@ -276,9 +267,9 @@ export default function Dashboard() {
           </div>
 
           <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm
-                       hover:border-red-500/50 transition-all duration-300">
+                       hover:border-yellow-500/50 transition-all duration-300">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 rounded-lg bg-gradient-to-r from-red-900 to-red-900">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-900 to-yellow-900">
                 <History className="w-5 h-5 text-black" />
               </div>
               <h3 className="text-sm text-gray-400">Last 24 Hours</h3>
@@ -301,14 +292,14 @@ export default function Dashboard() {
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               
               <div className="relative p-8 rounded-2xl border border-white/10 
-                           transition-all duration-300 group-hover:border-red-500/50">
+                           transition-all duration-300 group-hover:border-yellow-500/50">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-r from-red-500 to-rose-500 text-black">
+                      <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-500 to-rose-500 text-black">
                         <platform.icon className="w-8 h-8" />
                       </div>
-                      <h3 className="text-2xl font-bold group-hover:text-red-500 transition-colors">
+                      <h3 className="text-2xl font-bold group-hover:text-yellow-500 transition-colors">
                         {platform.title}
                       </h3>
                     </div>
@@ -332,11 +323,11 @@ export default function Dashboard() {
                 <div 
                   key={index}
                   className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm
-                           hover:border-red-500/50 transition-all duration-300"
+                           hover:border-yellow-500/50 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-r from-red-500 to-rose-500">
+                      <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-500 to-rose-500">
                         {getPlatformIcon(blink.platform)}
                       </div>
                       <div>

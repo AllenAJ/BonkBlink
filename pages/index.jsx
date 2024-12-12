@@ -61,26 +61,25 @@ export default function Home() {
   const features = [
     {
       icon: <MessageCircle className="w-6 h-6" />,
-      title: "Cross-Chain Swaps",
-      description: "Seamlessly swap tokens across multiple chains with instant finality on Avalanche"
+      title: "Easy BONK Purchases",
+      description: "Buy BONK tokens directly with simple, shareable links"
     },
     {
       icon: <Vote className="w-6 h-6" />,
-      title: "DeFi Integration",
-      description: "Access Avalanche's DeFi ecosystem through simple, shareable links"
+      title: "BONK Swaps",
+      description: "Access BONK's DEX through user-friendly links"
     },
     {
       icon: <ShoppingBag className="w-6 h-6" />,
-      title: "AVAX Payments",
-      description: "Send and receive AVAX payments through user-friendly payment links"
+      title: "BONK Payments",
+      description: "Send and receive BONK payments through easy-to-share links"
     }
   ];
-
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <Head>
-        <title>AVAX Links - Web3 Links for the Avalanche Ecosystem</title>
-        <meta name="description" content="Transform Avalanche transactions into shareable links. Create Web3 actions that work anywhere - powered by AVAX." />
+        <title>Bonk Links - Web3 Links for the Bonk Ecosystem</title>
+        <meta name="description" content="Transform Avalanche transactions into shareable links. Create Web3 actions that work anywhere - poweyellow by AVAX." />
       </Head>
 
       {/* Animated background effect */}
@@ -103,7 +102,7 @@ export default function Home() {
                 height={32}
                 className="rounded-full"
               />
-              <span className="text-xl font-bold">AVAX Links</span>
+              <span className="text-xl font-bold">Bonk Links</span>
             </div>
           </div>
         </div>
@@ -115,22 +114,22 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left column - Main content */}
             <div className="space-y-8">
-              <h1 className="text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                  Turn Avalanche Actions Into Shareable Links
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-400 leading-relaxed">
-                Create Web3 links that work anywhere on the internet. Built for the Avalanche ecosystem, 
-                powered by AVAX. Experience the speed and security of Avalanche in every link.
-              </p>
+            <h1 className="text-6xl font-bold leading-tight">
+  <span className="bg-gradient-to-r from-yellow-400 to-orange-600 bg-clip-text text-transparent">
+    Turn BONK Actions Into Shareable Links
+  </span>
+</h1>
+
+<p className="text-xl text-gray-400 leading-relaxed">
+  Create Web3 links that work anywhere on the internet. Built for the BONK ecosystem, 
+  poweyellow by BONK. Experience the speed and fun of BONK in every link.
+</p>
 
               <button
                 onClick={connectWallet}
                 disabled={isConnecting}
-                className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 
-                         rounded-xl font-medium text-xl text-white hover:shadow-lg hover:shadow-red-500/20 
+                className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 
+                         rounded-xl font-medium text-xl text-white hover:shadow-lg hover:shadow-yellow-500/20 
                          transition-all duration-300"
               >
                 {isConnecting ? (
@@ -154,15 +153,15 @@ export default function Home() {
                 <div 
                   key={index}
                   className="group p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm
-                           hover:border-red-500/50 hover:bg-white/10 transition-all duration-300"
+                           hover:border-yellow-500/50 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-gradient-to-r from-red-500/10 to-red-600/10 
-                                group-hover:from-red-500/20 group-hover:to-red-600/20 transition-colors">
+                    <div className="p-3 rounded-lg bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 
+                                group-hover:from-yellow-500/20 group-hover:to-yellow-600/20 transition-colors">
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-red-500 transition-colors">
+                      <h3 className="text-lg font-semibold mb-2 group-hover:text-yellow-500 transition-colors">
                         {feature.title}
                       </h3>
                       <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
@@ -178,7 +177,7 @@ export default function Home() {
           {/* Bottom section */}
           <div className="mt-24 text-center">
             <h2 className="text-3xl font-bold mb-12">
-              Built on <span className="text-red-500">Avalanche</span>
+            Built for <span className="text-yellow-500">BONK</span>
             </h2>
           </div>
         </div>
